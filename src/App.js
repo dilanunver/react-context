@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.css';
+import React, { useState } from 'react';
+import { MainContext } from './context';
 
 function App() {
+  const [person, setPerson] = useState('dilan')
+  const [theme, setTheme] = useState('light')
+
+  const data = {
+    theme,
+    setTheme,
+    person,
+    setPerson
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainContext.Provider value={data} >
+      <Header></Header>
+      <Footer></Footer>
+
+    </MainContext.Provider>
   );
 }
 
